@@ -33,23 +33,29 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // IntersectionObserver for active section
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
-      },
-      { threshold: 0.6, rootMargin: "-100px 0px" }
-    );
+  // Default
+useEffect(() => {
+  setActiveSection("home");
+}, []);
 
-    const sections = document.querySelectorAll(
-      '[id="about"], [id="industries"], [id="features"], [id="analytics"], [id="roadmap"]'
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+  // IntersectionObserver for active section
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
+      });
+    },
+    { threshold: 0.6, rootMargin: "-100px 0px" }
+  );
+
+  const sections = document.querySelectorAll(
+    '[id="home"], [id="about"], [id="industries"], [id="features"], [id="analytics"], [id="roadmap"]'
+  );
+
+  sections.forEach((section) => observer.observe(section));
+  return () => observer.disconnect();
+}, []);
 
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
