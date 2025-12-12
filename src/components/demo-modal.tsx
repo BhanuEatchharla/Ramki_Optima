@@ -41,8 +41,8 @@ const demoFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters"),
   email: z.string().trim().toLowerCase().email("Please enter a valid email address"),
   company: z.string().trim().min(2, "Company name must be at least 2 characters"),
-  industry: z.enum(INDUSTRIES, { required_error: "Please select an industry" }),
-  fleetSize: z.enum(FLEET_SIZES, { required_error: "Please select fleet size" }),
+  industry: z.enum(INDUSTRIES).refine((val) => val !== undefined, "Please select an industry"),
+  fleetSize: z.enum(FLEET_SIZES).refine((val) => val !== undefined, "Please select fleet size"),
   message: z
     .string()
     .trim()
