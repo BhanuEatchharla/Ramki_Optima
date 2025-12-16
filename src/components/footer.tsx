@@ -6,7 +6,7 @@ import {
   Mail,
   Phone,
   Linkedin,
-  Twitter,
+
   Instagram,
   Youtube,
   Facebook,
@@ -32,7 +32,6 @@ export function Footer() {
 
   const socialIcons = [
     { icon: Linkedin, label: "LinkedIn", gradient: "from-blue-500 to-blue-700" },
-    { icon: Twitter, label: "X / Twitter", gradient: "from-cyan-400 to-blue-500" },
     { icon: Instagram, label: "Instagram", gradient: "from-pink-500 via-yellow-400 to-purple-600" },
     { icon: Youtube, label: "YouTube", gradient: "from-red-500 to-red-700" },
     { icon: MessageCircle, label: "WhatsApp", gradient: "from-green-400 to-green-600" },
@@ -42,7 +41,7 @@ export function Footer() {
 
   return (
     <footer className="bg-background-secondary border-t border-border text-muted-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Company Info */}
           <div className="space-y-4">
@@ -131,7 +130,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
+        <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
           © 2018 OPTIMA. All Rights Reserved.
         </div>
       </div>

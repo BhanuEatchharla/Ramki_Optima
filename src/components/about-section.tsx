@@ -1,14 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { SectionNav } from "@/components/section-nav";
 import {
   Brain,
   Zap,
   Shield,
   Globe,
-  ArrowRight,
   CheckCircle,
   TrendingUp,
 } from "lucide-react";
@@ -18,202 +15,136 @@ export function AboutSection() {
     {
       icon: TrendingUp,
       title: "30% Cost Reduction",
-      description:
-        "Optimize routes, reduce fuel costs, and minimize operational overhead with AI-driven insights.",
+      description: "AI-driven route optimization.",
     },
     {
       icon: Zap,
-      title: "100% Paperless Workflows",
-      description:
-        "Eliminate manual documentation with digital processes and automated compliance tracking.",
+      title: "100% Paperless",
+      description: "Fully digital workflows.",
     },
     {
       icon: Globe,
-      title: "Real-time GPS Tracking",
-      description:
-        "Monitor every vehicle with precision location data and predictive arrival times.",
+      title: "Live GPS Tracking",
+      description: "Real-time vehicle ETA.",
     },
     {
       icon: Shield,
-      title: "AI-Powered Validation",
-      description:
-        "Automated document verification, compliance checks, and anomaly detection.",
+      title: "AI Validation",
+      description: "Smart compliance checks.",
     },
   ];
 
   const features = [
-    "Centralized Logistics Management",
-    "Vehicle Induction to Delivery Automation",
-    "ERP Integration (SAP, Oracle, Tally)",
-    "Mobile Dashboard & Alerts",
-    "Predictive Analytics & Insights",
-    "Multi-plant Enterprise Visibility",
+    "Centralized Logistics Control",
+    "Vehicle Induction Automation",
+    "ERP Integrations",
+    "Mobile Alerts",
+    "Predictive Analytics",
+    "Multi-plant Visibility",
   ];
 
   return (
-    <section
-      id="about"
-      className="py-20 md:py-28 bg-background-secondary scroll-smooth"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="bg-background-secondary scroll-mt-[60px]">
+      <div
+        className="w-full max-w-9xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16
+                      min-h-[calc(100vh-80px)] flex flex-col py-8"
+      >
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-            <Brain className="h-4 w-4 mr-2" />
-            Why Choose OPTIMA
+        <div className="text-center">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+            <Zap className="h-4 w-4 mr-2" />
+            OPTIMA — Intelligent Plant Logistics
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-            Revolutionizing{" "}
-            <span className="bg-gradient-hero bg-clip-text text-transparent">
-              Logistics Management
-            </span>{" "}
-            with AI
+          <h2 className="mt-2 py-4 text-lg sm:text-xl md:text-2xl font-semibold tracking-tight">
+            Built for Modern, AI-Driven Logistics
           </h2>
-
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            OPTIMA transforms traditional logistics operations into intelligent,
-            automated workflows. From vehicle induction to proof of delivery,
-            every step is powered by AI to maximize efficiency and minimize
-            costs.
-          </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {benefits.map((benefit, index) => (
+        {/* Benefits */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {benefits.map((item, i) => (
             <Card
-              key={index}
-              className="group hover:shadow-glow transition-all duration-500 border-border/50 hover:border-primary/50"
+              key={i}
+              className="transition hover:-translate-y-0.5 hover:shadow-md"
             >
-              <CardContent className="p-6 text-center flex flex-col items-center justify-center">
-                <div className="bg-gradient-button p-3 rounded-full w-fit mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
-                  <benefit.icon className="h-6 w-6 text-primary-foreground" />
+              <CardContent className="p-3 text-center">
+                <div className="mx-auto mb-2 w-fit rounded-full bg-gradient-button p-2">
+                  <item.icon className="h-4 w-4 text-primary-foreground" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {benefit.description}
+                <h3 className="font-semibold text-sm mb-0.5">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-tight">
+                  {item.description}
                 </p>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Split Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: AI Automation Visual */}
-          <div className="relative animate-slide-in-left">
-            <div className="bg-gradient-card rounded-2xl p-6 sm:p-8 border border-border shadow-lg">
-              <h3 className="text-2xl font-bold mb-6 flex items-center justify-center sm:justify-start">
-                <Brain className="h-7 w-7 text-primary mr-3" />
-                AI-First Automation
-              </h3>
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Automation */}
+          <div className="bg-gradient-card rounded-xl p-4 border border-border">
+            <h3 className="text-sm sm:text-base font-semibold flex items-center gap-2 mb-3">
+              <Brain className="h-4 w-4 text-primary" />
+              AI-First Automation Flow
+            </h3>
 
-              <div className="space-y-4">
-                {[
-                  {
-                    step: "01",
-                    title: "Vehicle Induction",
-                    desc: "Automated entry validation",
-                  },
-                  {
-                    step: "02",
-                    title: "Document Processing",
-                    desc: "AI-powered verification",
-                  },
-                  {
-                    step: "03",
-                    title: "Route Optimization",
-                    desc: "Smart dispatch planning",
-                  },
-                  {
-                    step: "04",
-                    title: "Real-time Tracking",
-                    desc: "GPS monitoring & alerts",
-                  },
-                  {
-                    step: "05",
-                    title: "Proof of Delivery",
-                    desc: "Digital confirmation",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-4 group transition-all duration-500 hover:translate-x-1"
-                  >
-                    <div className="bg-primary text-primary-foreground w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold group-hover:scale-110 transition-transform duration-500">
-                      {item.step}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {item.desc}
-                      </p>
-                    </div>
-                    <CheckCircle className="h-5 w-5 text-success" />
+            <div className="space-y-2">
+              {[
+                "Vehicle Induction",
+                "Document Processing",
+                "Route Optimization",
+                "Live Tracking",
+                "Digital Proof of Delivery",
+              ].map((step, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 p-2 rounded-md hover:bg-primary/5 transition"
+                >
+                  <div className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[10px] font-bold">
+                    {`0${i + 1}`}
                   </div>
-                ))}
-              </div>
+                  <span className="flex-1 text-xs font-medium">{step}</span>
+                  <CheckCircle className="h-3.5 w-3.5 text-success" />
+                </div>
+              ))}
             </div>
-
-            {/* Floating Glows */}
-            <div className="absolute -top-4 -right-4 bg-success/20 w-16 h-16 rounded-full blur-2xl animate-pulse"></div>
-            <div
-              className="absolute -bottom-4 -left-4 bg-primary/20 w-20 h-20 rounded-full blur-2xl animate-pulse"
-              style={{ animationDelay: "1s" }}
-            ></div>
           </div>
 
-          {/* Right: Features & Stats */}
-          <div className="space-y-8 animate-slide-in-right text-center lg:text-left">
-            <div>
-              <h3 className="text-2xl font-bold mb-6">
-                Comprehensive{" "}
-                <span className="text-primary">Logistics Suite</span>
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                OPTIMA provides end-to-end visibility and control over your
-                logistics operations, integrating seamlessly with ERP systems
-                while adding AI intelligence.
-              </p>
-            </div>
+          {/* Features + Stats */}
+          <div className="space-y-4">
+            <h3 className="text-sm sm:text-base font-semibold">
+              Complete Logistics Suite
+            </h3>
 
-            {/* Features */}
-            <div className="space-y-3">
-              {features.map((feature, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {features.map((f, i) => (
                 <div
-                  key={index}
-                  className="flex items-center justify-center lg:justify-start space-x-3 group transition-all duration-300"
+                  key={i}
+                  className="flex items-center gap-2 p-2 rounded-md border border-border hover:bg-primary/5 transition"
                 >
-                  <CheckCircle className="h-5 w-5 text-success flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-foreground group-hover:text-primary transition-colors">
-                    {feature}
-                  </span>
+                  <CheckCircle className="h-3.5 w-3.5 text-success" />
+                  <span className="text-xs">{f}</span>
                 </div>
               ))}
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-3 pt-2">
               {[
-                { number: "30%", label: "Cost Savings" },
-                { number: "100%", label: "Paperless" },
-                { number: "24/7", label: "Monitoring" },
-              ].map((stat, index) => (
+                { n: "30%", l: "Cost" },
+                { n: "100%", l: "Paperless" },
+                { n: "24/7", l: "Tracking" },
+              ].map((s, i) => (
                 <div
-                  key={index}
-                  className="text-center p-4 bg-card border border-border rounded-xl hover:shadow-glow transition-all duration-300"
+                  key={i}
+                  className="rounded-lg border border-border p-2 text-center"
                 >
-                  <div className="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-                    {stat.number}
+                  <div className="text-sm font-bold bg-gradient-hero bg-clip-text text-transparent">
+                    {s.n}
                   </div>
-                  <div className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </div>
+                  <div className="text-[10px] text-muted-foreground">{s.l}</div>
                 </div>
               ))}
             </div>

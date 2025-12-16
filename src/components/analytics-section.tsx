@@ -13,7 +13,7 @@ import {
   Shield,
   Truck,
   Activity,
-  Target
+  Target,
 } from "lucide-react";
 import hero from "@/assets/business-analytics.jpg";
 
@@ -26,7 +26,12 @@ export function AnalyticsSection() {
       trend: "down",
       icon: DollarSign,
       description: "Monthly freight cost with AI optimization",
-      details: ["Freight cost per km", "Fuel efficiency tracking", "Idle cost analysis", "Route optimization savings"]
+      details: [
+        "Freight cost per km",
+        "Fuel efficiency tracking",
+        "Idle cost analysis",
+        "Route optimization savings",
+      ],
     },
     {
       title: "Fleet Utilization",
@@ -35,7 +40,12 @@ export function AnalyticsSection() {
       trend: "up",
       icon: Truck,
       description: "Vehicle capacity optimization rate",
-      details: ["Load factor analysis", "Vehicle assignment efficiency", "Capacity planning", "Resource allocation"]
+      details: [
+        "Load factor analysis",
+        "Vehicle assignment efficiency",
+        "Capacity planning",
+        "Resource allocation",
+      ],
     },
     {
       title: "On-Time Delivery",
@@ -44,7 +54,12 @@ export function AnalyticsSection() {
       trend: "up",
       icon: Clock,
       description: "Delivery performance metrics",
-      details: ["Delivery time accuracy", "Customer satisfaction", "SLA compliance", "Performance benchmarks"]
+      details: [
+        "Delivery time accuracy",
+        "Customer satisfaction",
+        "SLA compliance",
+        "Performance benchmarks",
+      ],
     },
     {
       title: "Compliance Score",
@@ -53,32 +68,52 @@ export function AnalyticsSection() {
       trend: "up",
       icon: Shield,
       description: "Regulatory compliance rate",
-      details: ["Document validity", "Safety compliance", "Permit tracking", "Audit readiness"]
-    }
+      details: [
+        "Document validity",
+        "Safety compliance",
+        "Permit tracking",
+        "Audit readiness",
+      ],
+    },
   ];
 
   const alerts = [
-    { type: "warning", message: "Vehicle ABC-123 permit expires in 3 days", priority: "high" },
-    { type: "info", message: "Route optimization suggests 15% fuel savings", priority: "medium" },
-    { type: "success", message: "All vehicles completed safety inspection", priority: "low" }
+    {
+      type: "warning",
+      message: "Vehicle ABC-123 permit expires in 3 days",
+      priority: "high",
+    },
+    {
+      type: "info",
+      message: "Route optimization suggests 15% fuel savings",
+      priority: "medium",
+    },
+    {
+      type: "success",
+      message: "All vehicles completed safety inspection",
+      priority: "low",
+    },
   ];
 
   return (
-    <section id="analytics" className="py-20 md:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="analytics"
+      className="py-4 md:py-4 bg-background scroll-mt-[60px]"
+    >
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12 md:mb-16 animate-fade-in">
+        <div className="text-center mb-4 md:mb-2 animate-fade-in">
           <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-success/10 border border-success/20 text-success text-sm font-medium mb-3">
             <BarChart3 className="h-4 w-4 mr-1.5" />
             Analytics & Insights
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight">
-            Data-Driven <span className="bg-gradient-hero bg-clip-text text-transparent">Intelligence</span> for Smarter Decisions
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-bold mb-4 md:mb-6 leading-tight">
+            Data-Driven{" "}
+            <span className="bg-gradient-hero bg-clip-text text-transparent">
+              Intelligence
+            </span>{" "}
+            for Smarter Decisions
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Transform your logistics data into actionable insights with AI-powered analytics,
-            predictive modeling, and real-time monitoring that drives continuous improvement.
-          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
@@ -93,8 +128,6 @@ export function AnalyticsSection() {
                   className="w-full h-56 sm:h-64 md:h-72 lg:h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-hero opacity-20"></div>
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-card/90 backdrop-blur-sm rounded-lg px-2 sm:px-3 py-1 sm:py-2">
-                </div>
               </div>
             </Card>
 
@@ -116,10 +149,18 @@ export function AnalyticsSection() {
                           {metric.title}
                         </CardTitle>
                       </div>
-                      <div className={`flex items-center space-x-1 text-xs sm:text-sm ${metric.trend === "up" ? "text-success" : "text-warning"
-                        }`}>
-                        <TrendingUp className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${metric.trend === "down" ? "rotate-180" : ""
-                          }`} />
+                      <div
+                        className={`flex items-center space-x-1 text-xs sm:text-sm ${
+                          metric.trend === "up"
+                            ? "text-success"
+                            : "text-warning"
+                        }`}
+                      >
+                        <TrendingUp
+                          className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${
+                            metric.trend === "down" ? "rotate-180" : ""
+                          }`}
+                        />
                         <span>{metric.change}</span>
                       </div>
                     </div>
@@ -136,7 +177,10 @@ export function AnalyticsSection() {
                       </div>
                       <div className="space-y-1">
                         {metric.details.map((detail, idx) => (
-                          <div key={idx} className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-muted-foreground">
+                          <div
+                            key={idx}
+                            className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-muted-foreground"
+                          >
                             <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary rounded-full"></div>
                             <span>{detail}</span>
                           </div>
@@ -161,10 +205,20 @@ export function AnalyticsSection() {
               </CardHeader>
               <CardContent className="space-y-3 sm:space-y-4">
                 <div className="space-y-2 sm:space-y-3">
-                  {["Active Vehicles", "In Transit", "At Loading", "Available"].map((label, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-xs sm:text-sm text-muted-foreground">
+                  {[
+                    "Active Vehicles",
+                    "In Transit",
+                    "At Loading",
+                    "Available",
+                  ].map((label, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between text-xs sm:text-sm text-muted-foreground"
+                    >
                       <span>{label}</span>
-                      <span className="font-semibold">{[147, 89, 34, 24][idx]}</span>
+                      <span className="font-semibold">
+                        {[147, 89, 34, 24][idx]}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -172,12 +226,16 @@ export function AnalyticsSection() {
                 <div className="pt-3 sm:pt-4 border-t border-border">
                   <div className="flex items-center space-x-1 sm:space-x-2 mb-1">
                     <Gauge className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-success" />
-                    <span className="text-xs sm:text-sm font-medium">Fleet Performance</span>
+                    <span className="text-xs sm:text-sm font-medium">
+                      Fleet Performance
+                    </span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-1.5 sm:h-2">
                     <div className="bg-gradient-hero h-1.5 sm:h-2 rounded-full w-[87%] animate-pulse-glow"></div>
                   </div>
-                  <div className="text-right text-[9px] sm:text-xs text-muted-foreground mt-1">87% Efficiency</div>
+                  <div className="text-right text-[9px] sm:text-xs text-muted-foreground mt-1">
+                    87% Efficiency
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -194,27 +252,36 @@ export function AnalyticsSection() {
                 {alerts.map((alert, index) => (
                   <div
                     key={index}
-                    className={`p-2 sm:p-3 rounded-lg border-l-4 ${alert.type === "warning"
-                      ? "bg-warning/10 border-warning"
-                      : alert.type === "success"
+                    className={`p-2 sm:p-3 rounded-lg border-l-4 ${
+                      alert.type === "warning"
+                        ? "bg-warning/10 border-warning"
+                        : alert.type === "success"
                         ? "bg-success/10 border-success"
                         : "bg-primary/10 border-primary"
-                      }`}
+                    }`}
                   >
                     <div className="flex items-start space-x-2">
-                      <div className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full mt-1 flex-shrink-0 ${alert.priority === "high"
-                        ? "bg-warning animate-pulse"
-                        : alert.priority === "medium"
-                          ? "bg-primary"
-                          : "bg-success"
-                        }`}></div>
-                      <p className="text-xs sm:text-sm text-foreground">{alert.message}</p>
+                      <div
+                        className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full mt-1 flex-shrink-0 ${
+                          alert.priority === "high"
+                            ? "bg-warning animate-pulse"
+                            : alert.priority === "medium"
+                            ? "bg-primary"
+                            : "bg-success"
+                        }`}
+                      ></div>
+                      <p className="text-xs sm:text-sm text-foreground">
+                        {alert.message}
+                      </p>
                     </div>
                   </div>
                 ))}
 
-                <Button variant="ghost" size="sm"
-                  className="w-full mt-3 text-primary hover:text-primary-foreground hover:bg-primary/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-full mt-3 text-primary hover:text-primary-foreground hover:bg-primary/10"
+                >
                   View All Alerts
                   <ArrowRight className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </Button>
@@ -231,18 +298,40 @@ export function AnalyticsSection() {
               </CardHeader>
               <CardContent className="space-y-3 sm:space-y-4">
                 {[
-                  { title: "Route Optimization", text: "AI suggests route changes for 15% fuel savings this week", color: "success" },
-                  { title: "Maintenance Alert", text: "3 vehicles require preventive maintenance within 7 days", color: "primary" },
-                  { title: "Demand Forecast", text: "23% increase in logistics demand predicted next month", color: "warning" }
+                  {
+                    title: "Route Optimization",
+                    text: "AI suggests route changes for 15% fuel savings this week",
+                    color: "success",
+                  },
+                  {
+                    title: "Maintenance Alert",
+                    text: "3 vehicles require preventive maintenance within 7 days",
+                    color: "primary",
+                  },
+                  {
+                    title: "Demand Forecast",
+                    text: "23% increase in logistics demand predicted next month",
+                    color: "warning",
+                  },
                 ].map((item, idx) => (
-                  <div key={idx} className={`p-2 sm:p-3 bg-${item.color}/10 rounded-lg`}>
-                    <div className={`text-xs sm:text-sm font-medium text-${item.color} mb-1`}>{item.title}</div>
-                    <p className="text-[9px] sm:text-xs text-muted-foreground">{item.text}</p>
+                  <div
+                    key={idx}
+                    className={`p-2 sm:p-3 bg-${item.color}/10 rounded-lg`}
+                  >
+                    <div
+                      className={`text-xs sm:text-sm font-medium text-${item.color} mb-1`}
+                    >
+                      {item.title}
+                    </div>
+                    <p className="text-[9px] sm:text-xs text-muted-foreground">
+                      {item.text}
+                    </p>
                   </div>
                 ))}
                 <Button
                   size="sm"
-                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:opacity-90 transition-all  w-80 duration-300 shadow-lg group mt-4 md:mt-6">
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:opacity-90 transition-all  w-80 duration-300 shadow-lg group mt-4 md:mt-6"
+                >
                   Explore Analytics
                   <BarChart3 className="ml-1.5 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </Button>

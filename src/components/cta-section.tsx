@@ -124,46 +124,84 @@ export default function CTASection() {
     return false;
   }
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setIsSubmitting(true);
+  // async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
 
-    const payload: Partial<FormData> = {
+  //   const payload: Partial<FormData> = {
+  //     name,
+  //     email,
+  //     company,
+  //     industry: industry as FormData["industry"] | undefined,
+  //     fleetSize: fleetSize as FormData["fleetSize"] | undefined,
+  //     message,
+  //   };
+
+  //   if (!validate(payload)) {
+  //     setIsSubmitting(false);
+  //     return;
+  //   }
+
+  //   try {
+  //     await new Promise((r) => setTimeout(r, 400));
+  //     console.log("CTA contact form submitted:", payload);
+
+  //     setShowSuccess(true);
+  //     toast({
+  //       title: "Thanks! We’ll be in touch.",
+  //       description: "Your request has been recorded.",
+  //     });
+  //     router.refresh();
+  //     resetForm();
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast({
+  //       title: "Submission failed",
+  //       description: "Please try again.",
+  //       variant: "destructive",
+  //     });
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // }
+  const onSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setIsSubmitting(true);
+
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
       name,
       email,
       company,
-      industry: industry as FormData["industry"] | undefined,
-      fleetSize: fleetSize as FormData["fleetSize"] | undefined,
+      industry,
+      fleetSize,
       message,
-    };
+    }),
+  });
 
-    if (!validate(payload)) {
-      setIsSubmitting(false);
-      return;
-    }
+  const data = await res.json();
 
-    try {
-      await new Promise((r) => setTimeout(r, 400));
-      console.log("CTA contact form submitted:", payload);
+  setIsSubmitting(false);
 
-      setShowSuccess(true);
-      toast({
-        title: "Thanks! We’ll be in touch.",
-        description: "Your request has been recorded.",
-      });
-      router.refresh();
-      resetForm();
-    } catch (err) {
-      console.error(err);
-      toast({
-        title: "Submission failed",
-        description: "Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  if (!res.ok) {
+    alert(data.error || "Something went wrong");
+    return;
   }
+
+  alert("Thank you! We’ll contact you shortly.");
+
+  // Reset form
+  onField.name("");
+  onField.email("");
+  onField.company("");
+  onField.industry("");
+  onField.fleetSize("");
+  onField.message("");
+};
+
 
   const onField = {
     name: (v: string) => {
@@ -200,7 +238,7 @@ export default function CTASection() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-primary text-sm font-medium">
               <Sparkles className="h-4 w-4" />
-              AI-Powered Fleet Assistant
+              Powered Fleet Assistant
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-snug">

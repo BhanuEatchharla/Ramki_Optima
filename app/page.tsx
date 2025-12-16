@@ -14,13 +14,13 @@ import CTASection from "@/components/cta-section";
 export default function Page() {
   useEffect(() => {
     // Update document title and meta tags for SEO
-    document.title = "OPTIMA - AI-Powered Logistics & Transportation Management | Reduce Costs by 30%";
+    document.title = "OPTIMA - Powered Logistics & Transportation Management | Reduce Costs by 30%";
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute("content", 
-        "Transform your logistics with OPTIMA's AI-powered platform. Automate vehicle induction to proof of delivery, reduce costs by 30%, achieve 100% paperless workflows. Trusted by 500+ enterprises."
+        "Transform your logistics with OPTIMA's Powered platform. Automate vehicle induction to proof of delivery, reduce costs by 30%, achieve 100% paperless workflows. Trusted by 500+ enterprises."
       );
     }
 
@@ -29,7 +29,7 @@ export default function Page() {
     const ogDescription = document.querySelector('meta[property="og:description"]');
     
     if (ogTitle) {
-      ogTitle.setAttribute("content", "OPTIMA - AI-Powered Logistics & Transportation Management");
+      ogTitle.setAttribute("content", "OPTIMA - Powered Logistics & Transportation Management");
     }
     if (ogDescription) {
       ogDescription.setAttribute("content", 
