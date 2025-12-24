@@ -1,5 +1,7 @@
 import "./globals.css";
 import Providers from "./providers";
+import { Inter } from "next/font/google";
+
 
 export const metadata = {
   title:
@@ -14,6 +16,12 @@ export const metadata = {
     siteName: "OPTIMA",
   },
 };
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 
 export default function RootLayout({
   children,
