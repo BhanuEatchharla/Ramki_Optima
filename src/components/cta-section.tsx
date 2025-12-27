@@ -108,6 +108,8 @@ export default function CTASection() {
     setErrors({});
   };
 
+  
+
   function validate(payload: Partial<FormData>): payload is FormData {
     const result = schema.safeParse(payload);
     if (result.success) {
@@ -124,84 +126,58 @@ export default function CTASection() {
     return false;
   }
 
-  // async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
 
-  //   const payload: Partial<FormData> = {
-  //     name,
-  //     email,
-  //     company,
-  //     industry: industry as FormData["industry"] | undefined,
-  //     fleetSize: fleetSize as FormData["fleetSize"] | undefined,
-  //     message,
-  //   };
-
-  //   if (!validate(payload)) {
-  //     setIsSubmitting(false);
-  //     return;
-  //   }
-
-  //   try {
-  //     await new Promise((r) => setTimeout(r, 400));
-  //     console.log("CTA contact form submitted:", payload);
-
-  //     setShowSuccess(true);
-  //     toast({
-  //       title: "Thanks! We’ll be in touch.",
-  //       description: "Your request has been recorded.",
-  //     });
-  //     router.refresh();
-  //     resetForm();
-  //   } catch (err) {
-  //     console.error(err);
-  //     toast({
-  //       title: "Submission failed",
-  //       description: "Please try again.",
-  //       variant: "destructive",
-  //     });
-  //   } finally {
-  //     setIsSubmitting(false);
-  //   }
-  // }
-  const onSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  setIsSubmitting(true);
-
-  const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+    const payload: Partial<FormData> = {
       name,
       email,
       company,
-      industry,
-      fleetSize,
+      industry: industry as FormData["industry"] | undefined,
+      fleetSize: fleetSize as FormData["fleetSize"] | undefined,
       message,
-    }),
-  });
+    };
 
-  const data = await res.json();
+    if (!validate(payload)) {
+      setIsSubmitting(false);
+      return;
+    }
 
-  setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-  if (!res.ok) {
-    alert(data.error || "Something went wrong");
-    return;
+      const text = await res.text();
+      const data = text ? JSON.parse(text) : {};
+
+      if (!res.ok) {
+        throw new Error(data.error || "Request failed");
+      }
+
+      setShowSuccess(true);
+      toast({
+        title: "Thanks! We'll be in touch.",
+        description: "Your request has been recorded.",
+      });
+      router.refresh();
+      resetForm();
+    } catch (err) {
+      console.error("Submit error:", err);
+      toast({
+        title: "Submission failed",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
-
-  alert("Thank you! We’ll contact you shortly.");
-
-  // Reset form
-  onField.name("");
-  onField.email("");
-  onField.company("");
-  onField.industry("");
-  onField.fleetSize("");
-  onField.message("");
-};
-
 
   const onField = {
     name: (v: string) => {
